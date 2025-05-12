@@ -7,7 +7,7 @@ const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 //const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const ExpressError = require("./utils/ExpressError.js");
+const ExpressError = require("./utils/Expresserror.js");
 const { listingSchema, reviewSchema } = require('./schema.js');
 const passport=require("passport");
 const LocalStrategy=require("passport-local");
@@ -30,15 +30,15 @@ console.log('Review module loaded successfully');
 const session = require('express-session');
 const flash=require("connect-flash");
 // Database connection
- const MONGO_URL = "mongodb://127.0.0.1:27017/ghar";
+//  const MONGO_URL = "mongodb://127.0.0.1:27017/ghar";
 
-// const dbURI = process.env.MONGODB_URI || 'your-mongodb-uri-here';
+const dbURI = process.env.MONGODB_URI || 'your-mongodb-uri-here';
 
 // mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 //     .then(() => console.log('Connected to MongoDB'))
 //     .catch(err => console.log('Database connection error:', err));
 
-mongoose.connect(MONGO_URL)
+mongoose.connect(dbURI)
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.log('Database connection error:', err));
 
